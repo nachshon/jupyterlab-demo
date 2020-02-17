@@ -123,6 +123,13 @@ def r(ctx, env_name=env_name):
     cmd = '{0!s} activate {1!s} && conda install -c conda-forge r-irkernel r-ggplot2'
     ctx.run(cmd.format(source, env_name))
 
+@task
+def bash(ctx, env_name=env_name):
+    '''
+    Installs the bash kernel and associated libs.
+    '''
+    cmd = '{0!s} activate {1!s} && conda install -c bash_kernel && python -m bash_kernel.install'
+    ctx.run(cmd.format(source, env_name))
 
 @task
 def talk(ctx, talk_name, clean=False):
